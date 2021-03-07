@@ -1,0 +1,12 @@
+server:
+  port: 9200
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/bpatel1992/config-server
+          clone-on-start: true
