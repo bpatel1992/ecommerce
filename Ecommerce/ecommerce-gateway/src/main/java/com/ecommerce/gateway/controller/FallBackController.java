@@ -23,4 +23,10 @@ public class FallBackController {
 		return "Ecommerce Service is taking too long to respond or is down. Please try again later";
 		
 	}
+	
+	@RequestMapping("/ecommercePaymentFallback")
+	public String ecommercePaymentCallback() {
+		return "Payment Service is taking too long to respond or is down. Please try again later";
+		
+	}
 }
