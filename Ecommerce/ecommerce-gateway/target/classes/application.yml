@@ -22,7 +22,16 @@ spring:
         - name: CircuitBreaker
           args:
             name: ecommerce-service
-            fallbackuri: forward:/ecommerceServiceFallback         
+            fallbackuri: forward:/ecommerceServiceFallback
+      - id: ecommerce-payment
+        uri: lb://ECOMMERCE-PAYEMENT
+        predicates:
+        - Path=/payments/**
+        filters:
+        - name: CircuitBreaker
+          args:
+            name: ecommerce-payment
+            fallbackuri: forward:/ecommercePaymentFallback         
                             
     
 server:  port: 8888
