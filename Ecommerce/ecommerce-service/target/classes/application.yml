@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: ecommerce-service
+    
+server:  port: 8111
+  
+  
+  
