@@ -19,12 +19,12 @@
 		<spring-cloud.version>Hoxton.SR10</spring-cloud.version>
 	</properties>
 
-	<!-- <dependencies>
+	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-	</dependencies> -->
+	</dependencies>
 	<modules>
 		<module>ecommerce-service</module>
 		<module>ecommerce-cart</module>
