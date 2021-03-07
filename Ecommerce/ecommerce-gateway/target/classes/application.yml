@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:    gateway:      routes:      - id: ecommerce-cart
+        uri: lb://ECOMMERCE-CART
+        predicates:        - Path=/carts/** 
+        filters:        - name: CircuitBreaker
+          args:            name: ecommerce-cart
+            fallbackuri: forward:/ecommerceCartFallback
+      - id: ecommerce-product
+        uri: lb://ECOMMERCE-PRODUCT
+        predicates:
+        - Path=/products/**
+        filters:        - name: CircuitBreaker
+          args:            name: ecommerce-product
+            fallbackuri: forward:/ecommerceProductFallback
+      - id: ecommerce-service
+        uri: lb://ECOMMERCE-SERVICE
+        predicates:
+        - Path=/services/**
+        filters:
+        - name: CircuitBreaker
+          args:
+            name: ecommerce-service
+            fallbackuri: forward:/ecommerceServiceFallback         
+                            
+    
+server:  port: 8888
+  
+  
+    
+management:
+   endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000  
+         
+         
+    
